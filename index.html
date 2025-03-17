@@ -11,10 +11,67 @@
         <h1 id="titulo">Texto Ajustável</h1>
         <p id="texto">Este é um exemplo de texto cujo tamanho pode ser ajustado usando os botões abaixo.</p>
         <div class="button-group">
-            <button onclick="aumentarTexto()">Aumentar Texto</button>
-            <button onclick="diminuirTexto()">Diminuir Texto</button>
+            <button id="aumentar">Aumentar Texto</button>
+            <button id="diminuir">Diminuir Texto</button>
         </div>
     </div>
     <script src="script.js"></script>
 </body>
 </html>
+
+/* style.css */
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    background-color: #f4f4f4;
+    padding: 20px;
+}
+
+.container {
+    max-width: 600px;
+    margin: auto;
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.button-group {
+    margin-top: 20px;
+}
+
+button {
+    margin: 10px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+    background-color: #007bff;
+    color: white;
+    transition: background 0.3s;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+/* script.js */
+let tamanhoFonte = 16;
+const texto = document.getElementById("texto");
+const botaoAumentar = document.getElementById("aumentar");
+const botaoDiminuir = document.getElementById("diminuir");
+
+botaoAumentar.addEventListener("click", () => {
+    if (tamanhoFonte < 30) {
+        tamanhoFonte += 2;
+        texto.style.fontSize = tamanhoFonte + "px";
+    }
+});
+
+botaoDiminuir.addEventListener("click", () => {
+    if (tamanhoFonte > 10) {
+        tamanhoFonte -= 2;
+        texto.style.fontSize = tamanhoFonte + "px";
+    }
+});
